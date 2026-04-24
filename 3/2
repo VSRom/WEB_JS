@@ -1,0 +1,35 @@
+/*
+Вывести на консоль таблицу умножения, используя вложенные циклы.
+*/
+
+let result = "";
+
+for (let i = 2; i <= 9; i++)
+{
+    for (let j = 2; j <= 9; j++)
+    {
+        result += i + " x " + j + " = " + i*j + "\t";
+    }
+    result += "\n";
+}
+
+console.log(result);
+
+/*
+        ИЛИ ТАК?
+
+let result = "";
+
+for (let i = 2; i <= 9; i++)
+{
+    for (let j = 2; j <= 9; j++)
+    {
+        result += i + " x " + j + " = " + i*j + "\n";
+    }
+    result += "\n";
+}
+
+console.log(result);
+
+*/
+
