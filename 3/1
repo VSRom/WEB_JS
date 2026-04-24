@@ -1,0 +1,116 @@
+/*
+Вывести с помощью цикла со счетчиком только четные или только нечетные числа в определенном диапазоне.
+Границы интервала задаются пользователем. Четность числа подтверждается пользователем,
+в противном случае выводятся только нечетные числа. Вывод осуществлять в консоль.
+*/
+
+function valider(name)
+{
+    while(true)
+    {
+
+    let temp = prompt("Введите " + name + " число из диапозона поиска: ");
+
+        if (temp === null) 
+            return null;
+
+        temp = temp.trim();
+
+        if(temp === "")
+        {
+            alert("Введите число!");
+            continue;
+        }
+
+        if(isNaN(+temp))
+        {
+            alert("Нужно ввести число!");
+            continue;
+        }
+        else 
+            return +temp;
+    }
+}
+
+function parity_valider()
+{
+    while(true)
+    {
+        let temp = prompt("Нужно ли выводить четные числа?");
+
+        if(temp === "") continue;
+
+        else if(temp.toLowerCase() === "да" || temp.toLowerCase() === "yes" || temp.toLowerCase() === "y" || temp.toLowerCase() === "д") return true;
+
+        else if(temp.toLowerCase() === "нет" || temp.toLowerCase() === "н" || temp.toLowerCase() === "no" || temp.toLowerCase() === "n") return false;
+
+        else 
+            {
+                alert("Нужно ввести ДА/НЕТ(YES/NO)(Y/N)(Д/Н) на поставленный вопрос!");
+                continue;
+            }
+    }
+}
+
+function parity_non_parity_numbers(num1, num2, parity)
+{
+    if (parity === true)
+    {
+        console.log("Четные числа В заданном диапозоне: ");
+
+        let result = "";
+
+            for(let i = num1; i <= num2; i++)
+            {
+                if(i % 2 === 0)
+                    result = result + i + " "; 
+            }
+                    console.log(result);
+    }
+
+    else
+    {
+        console.log("Нечетные числа в заданном диапозоне: ");
+
+        let result = "";
+
+            for(let i = num1; i <= num2; i++)
+            {
+                if(i % 2 !== 0)
+                    result = result + i + " ";  
+
+            }
+            console.log(result);
+    }
+}
+
+while(true)
+{
+    let num1 = valider("первое");
+    let num2 = valider("второе");
+    let parity = parity_valider();
+
+    if (num1 === null || num2 === null)
+    {
+        alert("Числа не могут быть без значения!");
+        continue;
+    }
+
+    if (num2 < num1)
+        [num1, num2] = [num2, num1];
+
+    if (num1 === num2)
+    {
+        alert("Числа равны!");
+        continue;
+    }
+
+    parity_non_parity_numbers(num1, num2, parity);
+
+    let answer = prompt("Повторим?")
+
+    if (answer === null) break;
+    else if(answer === "") continue;
+    else if(answer.toLowerCase() === "да" || answer.toLowerCase() === "yes" || answer.toLowerCase() === "y" || answer.toLowerCase() === "д") continue;
+    else break;
+}
